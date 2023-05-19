@@ -11,7 +11,10 @@
         <language />
         <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
         <forum />
-        <source>https://github.com/host505/script.keymapedit</source>
+        <source>https://github.com/bleak-lodge/script.keymapedit</source>
+        <assets>
+            <icon>icon.png</icon>
+        </assets>
         <news>[I]Changes on this fork include:[/I]
 - Forked - Rebranded to Keymap Edit
 - Added some missing actions, categories, windows introduced in Kodi v17 and v18
