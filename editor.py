@@ -17,10 +17,10 @@
 
 import xbmcaddon
 from threading import Timer
-from collections_backport import OrderedDict
-from xbmcgui import Dialog, WindowXMLDialog
+from collections import OrderedDict
+
 from actions import ACTIONS, WINDOWS
-from utils import tr
+from utils import tr, setting, Dialog, WindowXMLDialog
 
 
 class Editor(object):
@@ -32,17 +32,17 @@ class Editor(object):
     def start(self):
         while True:
             # Select context menu
-            idx = Dialog().select(tr(30007), WINDOWS.values())
+            idx = Dialog().select(tr(30007), list(WINDOWS.values()))
             if idx == -1:
                 break
-            window = WINDOWS.keys()[idx]
+            window = list(WINDOWS.keys())[idx]
 
             while True:
                 # Select category menu
-                idx = Dialog().select(tr(30008), ACTIONS.keys())
+                idx = Dialog().select(tr(30008), list(ACTIONS.keys()))
                 if idx == -1:
                     break
-                category = ACTIONS.keys()[idx]
+                category = list(ACTIONS.keys())[idx]
 
                 while True:
                     # Select action menu
@@ -68,6 +68,8 @@ class Editor(object):
                         newkey = KeyListener.record_key()
                         if newkey is None:
                             continue
+                        if self.long_press():
+                            newkey += ' + longpress'
 
                         new_mapping = (window, action, newkey)
                         if old_mapping in self.userkeymap:
@@ -87,8 +89,14 @@ class Editor(object):
                 if a in actions.keys():
                     actions[a] = k
         names = ACTIONS[category]
-        return [(action, key, names[action]) for action, key in actions.iteritems()]
+        return [(action, key, names[action]) for action, key in actions.items()]
 
+    def long_press(self):
+        if setting('longpress') == 'true':
+            lp = Dialog().yesno('Longpress', 'Add longpress function?')
+            if lp:
+                return True
+        return False
 
 class KeyListener(WindowXMLDialog):
     TIMEOUT = 5

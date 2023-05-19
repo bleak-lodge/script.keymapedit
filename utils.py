@@ -18,9 +18,17 @@
 import xml.etree.ElementTree as ET
 import json
 import xbmc
+import xbmcvfs
 import xbmcaddon
+from xbmcgui import Dialog, WindowXMLDialog
 
+
+try:
+    transPath = xbmcvfs.translatePath
+except:
+    transPath = xbmc.translatePath
 tr = xbmcaddon.Addon().getLocalizedString
+setting = xbmcaddon.Addon().getSetting
 
 def rpc(method, **params):
     params = json.dumps(params)
@@ -37,7 +45,7 @@ def read_keymap(filename):
                     for mapping in device:
                         key1 = mapping.get('id') or mapping.tag
                         key2 = mapping.get('mod')
-                        key = str(key1) + ' + ' + str(key2) if key2 != None else key1
+                        key = ' + '.join((key1, key2)) if key2 else key1
                         action = mapping.text
                         if action:
                             ret.append((context.tag.lower(), action.lower(), key.lower()))
@@ -53,7 +61,11 @@ def write_keymap(keymap, filename):
         builder.start("keyboard", {})
         for c, a, k in keymap:
             if c == context:
-                builder.start("key", {"id":k})
+                k = k.split(' + ')
+                if len(k) > 1:
+                    builder.start("key", {"id":k[0], "mod":k[1]})
+                else:
+                    builder.start("key", {"id":k[0]})
                 builder.data(a)
                 builder.end("key")
         builder.end("keyboard")

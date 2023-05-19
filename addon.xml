@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.keymapedit" name="Keymap Edit" provider-name="takoi, host505" version="0.1.3">
+<addon id="script.keymapedit" name="Keymap Edit" provider-name="takoi, host505" version="0.1.5">
     <requires>
-        <import addon="xbmc.python" version="2.19.0" />
+        <import addon="xbmc.addon" version="17.0.0" />
     </requires>
     <extension library="main.py" point="xbmc.python.script" />
     <extension point="xbmc.addon.metadata">
@@ -15,11 +15,13 @@
         <news>[I]Changes on this fork include:[/I]
 - Forked - Rebranded to Keymap Edit
 - Added some missing actions, categories, windows introduced in Kodi v17 and v18
+- Re-organised windows and actions
 - Generated .xml is now properly indented, instead of 1 line
-- Some rephrasing
 - Fixed keymap reloading after save
 - Converted to current language formatting
 - Added Greek language
+- Pyhton 3/Kodi 19+ support
+- Added longpress support
         </news>
     </extension>
 </addon>

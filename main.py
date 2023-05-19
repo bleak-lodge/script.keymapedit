@@ -21,13 +21,11 @@ import shutil
 import traceback
 import xbmc
 import utils
-from xbmcgui import Dialog
 from editor import Editor
-from utils import tr
 
 
-default = xbmc.translatePath('special://xbmc/system/keymaps/keyboard.xml')
-userdata = xbmc.translatePath('special://userdata/keymaps')
+default = utils.transPath('special://xbmc/system/keymaps/keyboard.xml')
+userdata = utils.transPath('special://userdata/keymaps')
 gen_file = os.path.join(userdata, 'gen.xml')
 
 
@@ -39,7 +37,7 @@ def setup_keymap_folder():
         for name in os.listdir(userdata):
             if name.endswith('.xml') and name != os.path.basename(gen_file):
                 src = os.path.join(userdata, name)
-                for i in xrange(100):
+                for i in range(100):
                     dst = os.path.join(userdata, "%s.bak.%d" % (name, i))
                     if os.path.exists(dst):
                         continue
@@ -72,7 +70,7 @@ def main():
     ## main loop ##
     confirm_discard = False
     while True:
-        idx = Dialog().select(tr(30000), [tr(30003), tr(30004), tr(30005)])
+        idx = utils.Dialog().select(utils.tr(30000), [utils.tr(30003), utils.tr(30004), utils.tr(30005)])
         if idx == 0:
             # edit
             editor = Editor(defaultkeymap, userkeymap)
@@ -90,7 +88,7 @@ def main():
             xbmc.executebuiltin("Action(reloadkeymaps)")
             break
         elif idx == -1 and confirm_discard:
-            if Dialog().yesno(tr(30000), tr(30006)) == 1:
+            if utils.Dialog().yesno(utils.tr(30000), utils.tr(30006)) == 1:
                 break
         else:
             break

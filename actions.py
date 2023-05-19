@@ -375,8 +375,8 @@ _windows = [
   "tvguide"                  , "TVGuide",
   "radioguide"               , "RadioGuide",
   "teletext"                 , "Teletext",
-  "pvrosdteletext"           , "PVROSDTeletext (depricated)",
-  "pvr"                      , "PVR (depricated)",
+  "pvrosdteletext"           , "PVROSDTeletext (deprecated)",
+  "pvr"                      , "PVR (deprecated)",
   "virtualkeyboard"          , "VirtualKeyboard",
   "numericinput"             , "NumericInput",
   "playercontrols"           , "PlayerControls",
@@ -389,9 +389,8 @@ _windows = [
   "gameosd"                  , "OSD-Game"
 ]
 
-from collections_backport import OrderedDict
+from collections import OrderedDict
 from utils import rpc
-import xbmc
 
 
 def action_dict(actions, action_names):

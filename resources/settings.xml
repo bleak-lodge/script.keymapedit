@@ -3,8 +3,7 @@
 <settings>
 
     <category label="General">
-        <setting type="lsep" label="30013" />
-        <setting id="deviceTag" type="select" label="30014" values="keyboard|remote|gamepad|mouse|touch" default="keyboard" />
+        <setting id="longpress" type="bool" label="Prompt for longpress function" default="false" />
     </category>
 
 </settings>
