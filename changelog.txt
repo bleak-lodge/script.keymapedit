@@ -1,3 +1,6 @@
+[B]v0.1.6[/B]
+- Rename user keymap files only when new mapping is saved (credits @pkscout)
+
 [B]v0.1.5[/B]
 - Now compatible with Python 3/Kodi 19+
 - Added longpress support - enable in settings for the prompt to appear after key assign
