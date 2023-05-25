@@ -3,7 +3,7 @@
 <settings>
 
     <category label="General">
-        <setting id="longpress" type="bool" label="Prompt for longpress function" default="false" />
+        <setting id="longpress" type="bool" label=30013 default="false" />
     </category>
 
 </settings>

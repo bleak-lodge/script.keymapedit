@@ -68,3 +68,11 @@ msgctxt "#30012"
 msgid "Remove"
 msgstr "Αφαίρεση"
 
+msgctxt "#30013"
+msgid "Prompt for longpress function"
+msgstr "Προτροπή για εφαρμογή λειτουργίας longpress"
+
+msgctxt "#30014"
+msgid "Add longpress function to this mapping?"
+msgstr "Προσθήκη λειτουργίας longpress σε αυτό το mapping?"
+

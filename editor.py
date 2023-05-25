@@ -93,8 +93,7 @@ class Editor(object):
 
     def long_press(self):
         if setting('longpress') == 'true':
-            lp = Dialog().yesno('Longpress', 'Add longpress function?')
-            if lp:
+            if Dialog().yesno('Longpress', tr(30014)):
                 return True
         return False
 
